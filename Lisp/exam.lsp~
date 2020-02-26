@@ -1,0 +1,7 @@
+(defun delOcc(L E)
+(cond
+	((null L) nil)
+	((listp (car L))(cons (delOcc (car L) E) (delOcc (cdr L) E)))
+	((equal (car L) E) (delOcc (cdr L) E))
+)
+)

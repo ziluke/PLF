@@ -1,0 +1,39 @@
+
+;validate if given parameter is a binary tree or not
+(defun is-tree(tree)
+    (cond 
+         ((null tree) NIL)
+         ((< (list-length tree) 3) NIL)
+         (t)
+    )
+)
+
+;return left subtree of a binary tree
+(defun left-subtree(tree)
+    (cond 
+         ((null tree) NIL)
+         ((not (listp tree)) NIL)
+         (t (car (cdr tree)))
+    )
+)
+
+(defun right-subtree(tree)
+    (cond 
+         ((null tree) NIL)
+         ((not (listp tree)) NIL)
+         (t (car (cdr (cdr tree))))
+    )
+)
+
+;perform preorder traverse
+(defun preorder(tree)
+    (if 
+        (not (is-tree tree)) NIL
+        
+           (cons (car tree)
+               (append (preorder (left-subtree tree))
+                     (preorder (right-subtree tree))
+               )
+           )
+    )
+)
